@@ -1,6 +1,8 @@
 # qdrant_sample3
 
-## Run qdrant in a Docker container
+## 1. Run qdrant in a Docker container
+
+We first have to create a **Vector Database** with **qdrant** 
 
 We first have to view the user folder name and set in in the command:
 
@@ -13,3 +15,11 @@ docker run -p 6333:6333 - p 6334:6334 ^
 -v C:\\Users\\luisc\\luiscocoenriquezvector\\qdrant_storage:/ qdrant / storage:z ^
 qdrant / qdrant
 ```
+
+## 2. Create Ollama phi3:latest 
+
+We download and run the Ollama AI engine in our local laptop
+
+We also download the latest phi3 image
+
+## 3. We 
