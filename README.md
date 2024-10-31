@@ -1,5 +1,9 @@
 # qdrant_sample3
 
+https://learn.microsoft.com/en-us/semantic-kernel/concepts/vector-store-connectors/vector-search
+
+https://learn.microsoft.com/en-us/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/qdrant-connector
+
 ## 1. Run qdrant in a Docker container
 
 We first have to create a **Vector Database** with **qdrant** 
