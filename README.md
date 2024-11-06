@@ -15,9 +15,9 @@ We first have to view the user folder name and set in in the command:
 Now we execute the command to run qdrant docker container
 
 ```
-docker run -p 6333:6333 - p 6334:6334 ^
--v C:\\Users\\luisc\\luiscocoenriquezvector\\qdrant_storage:/ qdrant / storage:z ^
-qdrant / qdrant
+docker run -p 6333:6333 -p 6334:6334 ^
+-v C:\Users\luisc\luiscocoenriquezvector\qdrant_storage:/qdrant/storage:z ^
+qdrant/qdrant
 ```
 
 ## 2. How to run an Ollama Docker container
