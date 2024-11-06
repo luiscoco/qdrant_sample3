@@ -48,11 +48,16 @@ Now we have to intall the **phi3:latest** Model inside the container. We use the
 ollama pull phi3:latest
 ```
 
+![image](https://github.com/user-attachments/assets/68cdd9e1-16f3-47ce-ac85-78f0d9d5dc42)
+
 we verify the installation
 
 ```
 ollama list
 ```
+
+![image](https://github.com/user-attachments/assets/b8836fec-97fd-4b0e-97b1-aebe0aee317c)
+
 
 We also verify the Ollama docker container is running in **Docker Desktop**
 
