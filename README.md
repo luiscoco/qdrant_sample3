@@ -58,8 +58,15 @@ ollama list
 
 ![image](https://github.com/user-attachments/assets/b8836fec-97fd-4b0e-97b1-aebe0aee317c)
 
-
 We also verify the Ollama docker container is running in **Docker Desktop**
 
-## 4. 
+![image](https://github.com/user-attachments/assets/af7de325-f8d4-4a4d-b8a3-1c24b9538db4)
+
+## 4. We create a new C# console application with Visual Studio Community Edition 2022 and .NET 9
+
+
+## 5. We load the Nuget packages
+
+![image](https://github.com/user-attachments/assets/9b8982b9-c052-42c3-b1d7-6d81ad004f6c)
+
 
