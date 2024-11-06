@@ -129,15 +129,30 @@ var embedding = await olamaTES.GenerateEmbeddingAsync(descriptionText);
 
 ### 6.4. Record Creation and Insertion
 
-A Hotel record is created with fields HotelId, HotelName, Description, and DescriptionEmbedding
+A **Hotel record** is **created** with fields HotelId, HotelName, Description, and DescriptionEmbedding
 
-This record is then inserted into the skhotels1 collection using UpsertAsync, which ensures that the record is added or updated if it already exists
+This **record** is then **inserted** into the skhotels1 collection using UpsertAsync, which ensures that the record is added or updated if it already exists
+
+```csharp
+var hotelRecord = new Hotel
+{
+    HotelId = hotelId,
+    HotelName = "Happy Hotel",
+    Description = descriptionText,
+    DescriptionEmbedding = embedding.ToArray()
+};
+await collection.UpsertAsync(hotelRecord);
+```
 
 ### 6.5. Record Retrieval
 
 After insertion, the record is retrieved from the collection using GetAsync based on the HotelId
 
 If retrieval is successful, it prints out the retrieved hotel’s name and description
+
+```csharp
+var retrievedHotel = await collection.GetAsync(hotelId);
+```
 
 ### 6.6. Exception Handling
 
@@ -151,7 +166,24 @@ The attribute DescriptionEmbedding is specifically marked for storage as a 1024-
 
 This embedding enables the database to perform vector searches (e.g., finding similar descriptions)
 
-**Summary**: This code demonstrates how to generate embeddings for text descriptions, insert those embeddings into a Qdrant-based vector database, and retrieve data based on an identifier
+```csharp
+public class Hotel
+{
+    [VectorStoreRecordKey]
+    public ulong HotelId { get; set; }
+
+    [VectorStoreRecordData(IsFilterable = true, StoragePropertyName = "hotel_name")]
+    public string HotelName { get; set; }
+
+    [VectorStoreRecordData(IsFullTextSearchable = true, StoragePropertyName = "hotel_description")]
+    public string Description { get; set; }
+
+    [VectorStoreRecordVector(1024, DistanceFunction.EuclideanDistance, IndexKind.Hnsw, StoragePropertyName = "hotel_description_embedding")]
+    public ReadOnlyMemory<float>? DescriptionEmbedding { get; set; }
+}
+```
+
+### 6.8. Summary: This code demonstrates how to generate embeddings for text descriptions, insert those embeddings into a Qdrant-based vector database, and retrieve data based on an identifier
 
 The Hotel class includes specific annotations for Qdrant, which specify how to store and index each field
 
