@@ -122,6 +122,11 @@ A description ("A happy place for everyone.") is prepared, and an embedding is g
 
 The generated embedding, which is an array of floating-point numbers, represents a numerical vector encoding of the description text. If embedding generation fails, the program exits
 
+```csharp
+string descriptionText = "A happy place for everyone.";
+var embedding = await olamaTES.GenerateEmbeddingAsync(descriptionText);
+```
+
 ### 6.4. Record Creation and Insertion
 
 A Hotel record is created with fields HotelId, HotelName, Description, and DescriptionEmbedding
