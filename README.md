@@ -107,6 +107,15 @@ This collection will store vector embeddings for fast similarity-based retrieval
 
 If the collection doesn’t exist, it creates a new one using **CreateCollectionIfNotExistsAsync**
 
+```csharp
+Console.WriteLine("Attempting to retrieve or create collection...");
+var collection = vectorStore.GetCollection<ulong, Hotel>("skhotels1");
+
+// Create collection if it does not exist
+await collection.CreateCollectionIfNotExistsAsync();
+Console.WriteLine("Collection created or retrieved successfully.");
+```
+
 ### 6.3. Embedding Generation
 
 A description ("A happy place for everyone.") is prepared, and an embedding is generated for this text using the olamaTES.GenerateEmbeddingAsync method
