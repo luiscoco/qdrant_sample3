@@ -20,10 +20,33 @@ docker run -p 6333:6333 - p 6334:6334 ^
 qdrant / qdrant
 ```
 
-## 2. Create Ollama phi3:latest 
+## 2. How to run an Ollama Docker container
 
-We download and run the Ollama AI engine in our local laptop
+```
+docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+```
 
-We also download the latest phi3 image
+## 3. How to install the "phi3:latest" model in the Ollama Docker container
 
-## 3. We 
+Access the Running Container:  First, ensure your Ollama container is running. If it's named ollama, you can access its shell using:
+
+```
+docker exec -it ollama /bin/sh
+```
+
+Now we have to intall the **phi3:latest** Model inside the container. We use the ollama pull command to download the model:
+
+```
+ollama pull phi3:latest
+```
+
+we verify the installation
+
+```
+ollama list
+```
+
+We also verify the Ollama docker container is running in **Docker Desktop**
+
+## 4. 
+
