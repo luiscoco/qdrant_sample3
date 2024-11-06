@@ -1,8 +1,6 @@
 # Leveraging Qdrant and Ollama for Efficient Text Embedding and Vector Search in .NET
 
-This code demonstrates how to **generate embeddings** for text descriptions, **insert** those **embeddings** into a **Qdrant-based vector database**, and **retrieve** data based on an identifier
-
-The Hotel class includes specific annotations for Qdrant, which specify how to store and index each field
+This code demonstrates how to **generate embeddings** for text descriptions, **insert** those **embeddings** into a **Qdrant-based vector database**, and **retrieve** data based on an identifier. The **Hotel class** includes specific **annotations for Qdrant**, which specify how to store and index each field
 
 https://learn.microsoft.com/en-us/semantic-kernel/concepts/vector-store-connectors/vector-search
 
