@@ -8,9 +8,9 @@ https://learn.microsoft.com/en-us/semantic-kernel/concepts/vector-store-connecto
 
 https://learn.microsoft.com/en-us/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/qdrant-connector
 
-## 1. Run qdrant in a Docker container
+## 1. Run Qdrant in a Docker container
 
-We first have to create a **Vector Database** with **qdrant** 
+We first have to create a **Vector Database** with **Qdrant** 
 
 We first have to view the user folder name and set in in the command:
 
