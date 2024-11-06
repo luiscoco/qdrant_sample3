@@ -62,6 +62,17 @@ We also verify the Ollama docker container is running in **Docker Desktop**
 
 ## 4. We create a new C# console application with Visual Studio Community Edition 2022 and .NET 9
 
+We run Visual Studio 2022 Community Edition and we Create a new Project
+
+![image](https://github.com/user-attachments/assets/5270a5b0-5e23-4e7c-a254-5e30f4a3ce93)
+
+We select the C# console project template and press the Next button
+
+![image](https://github.com/user-attachments/assets/dd2df4c7-1557-4d23-a62f-e0cb8dbc2712)
+
+We input the project name and location and press the Next button 
+
+We select the .NET 9 framework and press the Create button
 
 ## 5. We load the Nuget packages
 
