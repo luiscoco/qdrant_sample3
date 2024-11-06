@@ -26,6 +26,14 @@ qdrant/qdrant
 docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
 ```
 
+![image](https://github.com/user-attachments/assets/9bc2d6f4-91e0-4a7c-b97a-04c5caf51eed)
+
+We also verify in Docker Desktop
+
+![image](https://github.com/user-attachments/assets/2d7a12f1-92ac-495c-b70e-8eeceb2bf443)
+
+![image](https://github.com/user-attachments/assets/a695d24d-271e-4d22-aa06-6007a24474b8)
+
 ## 3. How to install the "phi3:latest" model in the Ollama Docker container
 
 Access the Running Container:  First, ensure your Ollama container is running. If it's named ollama, you can access its shell using:
