@@ -1,4 +1,4 @@
-# qdrant_sample3
+# Leveraging Qdrant and Ollama for Efficient Text Embedding and Vector Search in .NET
 
 This code demonstrates how to **generate embeddings** for text descriptions, **insert** those **embeddings** into a **Qdrant-based vector database**, and **retrieve** data based on an identifier
 
