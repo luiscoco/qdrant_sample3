@@ -34,7 +34,7 @@ We also verify in Docker Desktop
 
 ![image](https://github.com/user-attachments/assets/a695d24d-271e-4d22-aa06-6007a24474b8)
 
-## 3. How to install the "phi3:latest" model in the Ollama Docker container
+## 3. How to install the "mxbai-embed-large" model in the Ollama Docker container
 
 Access the Running Container:  First, ensure your Ollama container is running. If it's named ollama, you can access its shell using:
 
@@ -42,13 +42,13 @@ Access the Running Container:  First, ensure your Ollama container is running. I
 docker exec -it ollama /bin/sh
 ```
 
-Now we have to intall the **phi3:latest** Model inside the container. We use the ollama pull command to download the model:
+Now we have to intall the **mxbai-embed-large** Model inside the container. We use the ollama pull command to download the model:
 
 ```
-ollama pull phi3:latest
+ollama pull mxbai-embed-large
 ```
 
-![image](https://github.com/user-attachments/assets/68cdd9e1-16f3-47ce-ac85-78f0d9d5dc42)
+
 
 we verify the installation
 
@@ -56,7 +56,7 @@ we verify the installation
 ollama list
 ```
 
-![image](https://github.com/user-attachments/assets/b8836fec-97fd-4b0e-97b1-aebe0aee317c)
+
 
 We also verify the Ollama docker container is running in **Docker Desktop**
 
