@@ -80,6 +80,67 @@ We select the .NET 9 framework and press the Create button
 
 ## 6. We explain the sample source code
 
+The sample is this repo is focused on creating and interacting with a **vector database** using **Qdrant** and an **Ollama Embedding** service. It essentially follows these steps:
+
+### 6.1. Initialization of Services and Clients
+
+It starts by initializing an embedding generation service, **OllamaTextEmbeddingGenerationService**, with a specific model (**mxbai-embed-large**) and a local server endpoint
+
+```csharp
+ITextEmbeddingGenerationService olamaTES = new OllamaTextEmbeddingGenerationService(
+    "mxbai-embed-large",
+    new Uri("http://localhost:11434"));
+```
+
+A Qdrant client (**QdrantClient**) is set up to connect to a local instance of **Qdrant running on port 6334**, and a vector store (**QdrantVectorStore**) is created from this client
+
+```csharp
+var client = new QdrantClient("localhost", 6334);
+var vectorStore = new QdrantVectorStore(client);
+```
+
+### 6.2. Collection Creation and Retrieval
+
+The code tries to retrieve or create a collection called skhotels1 to store hotel data
+
+This collection will store vector embeddings for fast similarity-based retrieval
+
+If the collection doesn’t exist, it creates a new one using **CreateCollectionIfNotExistsAsync**
+
+### 6.3. Embedding Generation
+
+A description ("A happy place for everyone.") is prepared, and an embedding is generated for this text using the olamaTES.GenerateEmbeddingAsync method
+
+The generated embedding, which is an array of floating-point numbers, represents a numerical vector encoding of the description text. If embedding generation fails, the program exits
+
+### 6.4. Record Creation and Insertion
+
+A Hotel record is created with fields HotelId, HotelName, Description, and DescriptionEmbedding
+
+This record is then inserted into the skhotels1 collection using UpsertAsync, which ensures that the record is added or updated if it already exists
+
+### 6.5. Record Retrieval
+
+After insertion, the record is retrieved from the collection using GetAsync based on the HotelId
+
+If retrieval is successful, it prints out the retrieved hotel’s name and description
+
+### 6.6. Exception Handling
+
+If any errors occur during this process, they are caught and printed, including the stack trace for easier debugging
+
+### 6.7. Hotel Class Definition
+
+The Hotel class defines a basic structure for a hotel record with attributes like HotelId, HotelName, and Description
+
+The attribute DescriptionEmbedding is specifically marked for storage as a 1024-dimensional vector with Euclidean distance for similarity matching
+
+This embedding enables the database to perform vector searches (e.g., finding similar descriptions)
+
+**Summary**: This code demonstrates how to generate embeddings for text descriptions, insert those embeddings into a Qdrant-based vector database, and retrieve data based on an identifier
+
+The Hotel class includes specific annotations for Qdrant, which specify how to store and index each field
+
 ```csharp
 using Microsoft.Extensions.VectorData;
 using Microsoft.SemanticKernel.Connectors.Ollama;
