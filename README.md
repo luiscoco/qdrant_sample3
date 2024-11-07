@@ -283,3 +283,93 @@ public class Hotel
 
 ![image](https://github.com/user-attachments/assets/9e5664d4-a756-4d75-a7de-f1f49595bb5b)
 
+# Advanced Features for Qdrant and Ollama Integration
+
+## 8. Semantic Search with Vector Similarity Scoring
+
+Enhance the application with semantic search capabilities by implementing vector similarity scoring
+
+Use the Qdrant API’s similarity functions to find vectors close to a given embedding, allowing users to search for semantically similar descriptions
+
+```csharp
+// Generate embedding for the search query
+string queryText = "Relaxing resort with ocean views";
+var queryEmbedding = await olamaTES.GenerateEmbeddingAsync(queryText);
+
+// Perform a similarity search using Qdrant
+var searchResults = await collection.GetSimilarAsync(queryEmbedding, topK: 5);
+foreach (var result in searchResults)
+{
+    Console.WriteLine($"Hotel: {result.Record.HotelName}, Score: {result.Score}");
+}
+```
+
+## 9. Metadata Filtering
+
+Implement metadata filtering to refine search results based on specific criteria. For example, **filter hotels by rating or location** alongside vector similarity
+
+```csharp
+Copy code
+// Adding metadata filtering for hotels with a minimum rating of 4.5
+var filteredResults = await collection.GetSimilarAsync(
+    queryEmbedding, 
+    topK: 5,
+    filters: new { Rating = 4.5, Location = "Beach" });
+```
+
+## 10. Batch Insertion of Embeddings
+
+Optimize performance by **inserting multiple records at once** with batch processing. This is useful when dealing with large datasets
+
+```csharp
+var hotelsBatch = new List<Hotel> { /* List of hotel objects */ };
+await collection.UpsertBatchAsync(hotelsBatch);
+```
+
+## 11. Hybrid Filtering: Combining Metadata and Vector Similarity
+
+Enable **hybrid filtering** by combining metadata-based filtering with vector similarity search to support complex queries
+
+```csharp
+var hybridResults = await collection.GetSimilarAsync(
+    queryEmbedding,
+    topK: 5,
+    filters: new { Rating = new { GreaterThanOrEqual = 4 }, Location = "Urban" });
+```
+
+## 12. Fine-tuning Embeddings with Custom Models
+
+For more accurate vector embeddings, experiment with **custom-trained models in Ollama**. Fine-tune models to better capture specific semantics (e.g., hospitality-related phrases).
+
+```csharp
+// Assuming a custom embedding model called "custom-hotel-embed"
+ITextEmbeddingGenerationService olamaTESCustom = new OllamaTextEmbeddingGenerationService(
+    "custom-hotel-embed", new Uri("http://localhost:11434"));
+```
+
+## 13. Asynchronous Batch Retrieval with Pagination
+
+Support asynchronous batch retrieval and pagination for handling large datasets, which can be beneficial when displaying results in a paginated interface
+
+```csharp
+int pageSize = 10;
+int currentPage = 1;
+var paginatedResults = await collection.GetSimilarAsync(
+    queryEmbedding, 
+    pageSize,
+    pageNumber: currentPage);
+```
+
+## 14. Real-time Embedding Updates
+
+Add functionality to update embeddings in real-time. This could involve regenerating embeddings whenever a hotel description is modified and updating the vector store accordingly
+
+```csharp
+// Update embedding for modified hotel description
+hotelRecord.Description = "New updated description for hotel";
+hotelRecord.DescriptionEmbedding = await olamaTES.GenerateEmbeddingAsync(hotelRecord.Description);
+
+// Update record in vector store
+await collection.UpsertAsync(hotelRecord);
+```
+
